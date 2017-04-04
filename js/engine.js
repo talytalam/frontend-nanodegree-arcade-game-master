@@ -95,6 +95,7 @@ var Engine = (function(global) {
             enemy.update(dt);
         });
         player.update();
+        player.checkCollision();
     }
 
     /* This function initially draws the "game level", it will then call
@@ -171,7 +172,8 @@ var Engine = (function(global) {
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
-        'images/char-horn-girl.png'
+        'images/char-horn-girl.png',
+        //'images/background.jpg'
     ]);
     Resources.onReady(init);
 

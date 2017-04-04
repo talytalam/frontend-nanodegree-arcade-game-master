@@ -29,6 +29,8 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+
+
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
@@ -40,7 +42,7 @@ var Player = function() {
 
 //bind player on canvas
 Player.prototype.update = function() {
-    if (this.x < -100 || this.x > 500 || this.y > 420 || this.y < -40) {
+    if (this.x < -1 || this.x > 500 || this.y > 420 || this.y < -40) {
         this.x = 205;
         this.y = 380;
     }
@@ -68,12 +70,21 @@ Player.prototype.handleInput = function(key) {
             this.y += 80;
     }
 };
+Player.prototype.checkCollision = function() {
+    for (var i=0;i < allEnemies.length;i++) {
+        if (allEnemies[i].x < this.x + 40 && allEnemies[i].x + 40 > this.x && allEnemies[i].y < this.y + 40 && 40 + allEnemies[i].y > this.y) {
+            this.x = 205;
+            this.y = 380;
+        }
+    }
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 var allEnemies = [new Enemy(210,63,80),new Enemy(5,145,250), new Enemy(300,227,100)];
 var player = new Player;
+
 
 
 // This listens for key presses and sends the keys to your
