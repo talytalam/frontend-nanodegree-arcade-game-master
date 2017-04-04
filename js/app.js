@@ -17,7 +17,7 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     
-    //ctx.translate(30 * dt, 0);
+    
     this.x += Math.random() * this.speed * dt;
 };
 
@@ -36,6 +36,10 @@ var Player = function() {
 };
 
 Player.prototype.update = function() {
+    if (this.x < -100 || this.x > 500 || this.y > 420 || this.y < -40) {
+        this.x = 210;
+        this.y = 300;
+    }
 
 };
 
@@ -57,8 +61,6 @@ Player.prototype.handleInput = function(key) {
     {
         this.x += 100;
     }
-
-
 };
 
 // Now instantiate your objects.
