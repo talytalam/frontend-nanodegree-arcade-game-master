@@ -44,7 +44,7 @@ Player.prototype.update = function() {
         this.x = 205;
         this.y = 380;
     }
-
+    
 };
 
 Player.prototype.render = function() {
@@ -53,23 +53,20 @@ Player.prototype.render = function() {
 
 //handle input to control player
 Player.prototype.handleInput = function(key) {
-    if (key === 'left')
-    {
-        this.x -= 100;
-    } 
-    else if (key === 'right')
-    {
-        this.x += 100;
-    }
-    else if (key === 'up')
-    {
-        this.y -= 80;
-    } 
-    else if (key === 'down')
-    {
-        this.y += 80;
-    } 
 
+    switch (key) {
+        case 'left': 
+            this.x -= 100;
+            break;
+        case 'right':
+            this.x += 100;
+            break
+        case 'up':
+            this.y -= 80;
+            break;
+        case 'down':
+            this.y += 80;
+    }
 };
 
 // Now instantiate your objects.
