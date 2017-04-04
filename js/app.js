@@ -34,15 +34,15 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 var Player = function() {
     this.sprite = 'images/char-horn-girl.png';
-    this.x = 210;
-    this.y = 300;
+    this.x = 205;
+    this.y = 380;
 };
 
 //bind player on canvas
 Player.prototype.update = function() {
     if (this.x < -100 || this.x > 500 || this.y > 420 || this.y < -40) {
-        this.x = 210;
-        this.y = 300;
+        this.x = 205;
+        this.y = 380;
     }
 
 };
@@ -55,20 +55,21 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(key) {
     if (key === 'left')
     {
-        this.x -= 80;
+        this.x -= 100;
     } 
+    else if (key === 'right')
+    {
+        this.x += 100;
+    }
     else if (key === 'up')
     {
         this.y -= 80;
     } 
     else if (key === 'down')
     {
-        this.y += 90;
+        this.y += 80;
     } 
-    else if (key === 'right')
-    {
-        this.x += 100;
-    }
+
 };
 
 // Now instantiate your objects.
