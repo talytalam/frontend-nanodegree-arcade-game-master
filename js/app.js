@@ -42,6 +42,7 @@ var Player = function() {
     this.sprite = 'images/char-horn-girl.png';
     this.x = 305;
     this.y = 380;
+    this.score = 0;
 };
 
 //bind player on canvas
@@ -119,7 +120,7 @@ Rock.prototype.render = function () {
 
 
 //This counts the score of the player by collecting rocks
-var scoreCount = 0;
+//var scoreCount = 0;
 
 Rock.prototype.collectAndScore = function () {
     if(player.x < this.x + 50 && player.x + 50 > this.x && player.y < this.y + 40 
@@ -130,19 +131,20 @@ Rock.prototype.collectAndScore = function () {
         var rocksY = Math.random() * (227-63);
         
         this.x += 2000;
-        scoreCount++;
-
+        player.score++;
+        console.log(player.score);
         var newGem = new Rock(rocksX,rocksY);
         allRocks.push(newGem);
     }
-    return scoreCount;
+    return player.score;
 };
 
 var allRocks = [new Rock(535,63), new Rock(270, 227)];
 
+
 //Display score, not working
 var score = document.getElementById('score');
-score.innerHTML = "Score : " + scoreCount;
+score.innerHTML = "Score : " + player.score;
 
 
 
