@@ -1,3 +1,7 @@
+//row 1: y = 63
+//row 2: y = 145
+//row 3: y = 227
+
 // Enemies our player must avoid
 var Enemy = function(x,y,speed) {
     // Variables applied to each of our instances go here,
@@ -99,3 +103,53 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+
+//Rocks as collectible
+var Rock = function (x,y) {
+    this.x = x;
+    this.y = y;
+    this.sprite = 'images/Rock.png';
+    this.visible = true;
+};
+
+
+Rock.prototype.render = function () {
+    if(this.visible === true) {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);  
+    } 
+};
+
+var scoreCount = 0;
+
+//This counts the score of the player by collecting rocks
+Rock.prototype.collectAndScore = function (scoreCount) {
+    if(player.x < this.x + 50 && player.x + 50 > this.x && player.y < this.y + 40 
+        && 40 + player.y > this.y) 
+    {
+        this.visible = false;
+        scoreCount++;
+    }
+    return scoreCount;
+};
+
+
+
+var allRocks = [new Rock(335,63), new Rock(270, 227)];
+
+//Display score 
+var score = document.getElementById('score');
+score.innerHTML = "Score : " + scoreCount;
+
+
+
+
+
+
+
+
+
+
+
+
+

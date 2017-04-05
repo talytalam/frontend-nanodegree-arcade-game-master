@@ -1,3 +1,13 @@
 body {
     text-align: center;
+    //background-image: url('images/background.jpg'); //I dont seem to get this working even I have added this to be loaded in the enjine.js
+}
+
+#score {
+	font-style: italic;
+	font-size: 3em;
+	margin-bottom: 0;
+	margin-top: 0;
+	text-align: left;
+	margin-left: 1em;
 }

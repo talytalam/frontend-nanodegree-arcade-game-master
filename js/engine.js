@@ -26,7 +26,7 @@ var Engine = (function(global) {
         lastTime;
 
     canvas.width = 705;
-    canvas.height = 606;
+    canvas.height = 550;
     doc.body.appendChild(canvas);
 
     /* This function serves as the kickoff point for the game loop itself
@@ -96,6 +96,10 @@ var Engine = (function(global) {
         });
         player.update();
         player.checkCollision();
+        allRocks.forEach(function(rock) {
+            rock.collectAndScore();
+        });
+        
     }
 
     /* This function initially draws the "game level", it will then call
@@ -153,6 +157,9 @@ var Engine = (function(global) {
         });
 
         player.render();
+        allRocks.forEach(function(rock) {
+            rock.render();
+        });
     }
 
     /* This function does nothing but it could have been a good place to
@@ -173,6 +180,7 @@ var Engine = (function(global) {
         'images/grass-block.png',
         'images/enemy-bug.png',
         'images/char-horn-girl.png',
+        'images/Rock.png'
         //'images/background.jpg'
     ]);
     Resources.onReady(init);
