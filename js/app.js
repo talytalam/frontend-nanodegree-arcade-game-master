@@ -133,7 +133,6 @@ Rock.prototype.collectAndScore = function () {
         
         this.x += 2000;
         player.score++;
-        console.log(player.score);
         var newGem = new Rock(rocksX,rocksY);
         allRocks.push(newGem);
     }

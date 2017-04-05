@@ -1,6 +1,6 @@
 body {
     text-align: center;
-    //background-image: url('images/background.jpg'); //I dont seem to get this working even I have added this to be loaded in the enjine.js
+    background-image: url("images/background.jpg"); //I dont seem to get this working even I have added this to be loaded in the enjine.js
 }
 
 #score {
