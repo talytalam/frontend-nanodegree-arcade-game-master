@@ -121,15 +121,13 @@ Rock.prototype.render = function () {
 
 
 //This counts the score of the player by collecting rocks
-//var scoreCount = 0;
-
 Rock.prototype.collectAndScore = function () {
     if(player.x < this.x + 50 && player.x + 50 > this.x && player.y < this.y + 40 
         && 40 + player.y > this.y) 
     {
         //generate random rocks
         var rocksX = Math.random() * (650 - 10);
-        var rocksY = Math.random() * (227-63);
+        var rocksY = Math.random() * (227 - 63);
         
         this.x += 2000;
         player.score++;
