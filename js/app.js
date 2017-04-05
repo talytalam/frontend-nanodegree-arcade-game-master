@@ -120,22 +120,31 @@ Rock.prototype.render = function () {
     } 
 };
 
+
+//generate random rocks
+var rocksX = Math.round(Math.random() * 700 + 1);
+var rocksY = Math.round(Math.random() * 164 + 63);
+
+
+
 var scoreCount = 0;
 
 //This counts the score of the player by collecting rocks
-Rock.prototype.collectAndScore = function (scoreCount) {
+Rock.prototype.collectAndScore = function (scoreCount,rocksX,rocksY) {
     if(player.x < this.x + 50 && player.x + 50 > this.x && player.y < this.y + 40 
         && 40 + player.y > this.y) 
     {
         this.visible = false;
         scoreCount++;
+        var newGem = new Rock(rocksX,rocksY);
+        allRocks.push(newGem);
     }
     return scoreCount;
 };
 
 
 
-var allRocks = [new Rock(335,63), new Rock(270, 227)];
+var allRocks = [new Rock(535,63), new Rock(270, 227)];
 
 //Display score 
 var score = document.getElementById('score');
