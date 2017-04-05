@@ -80,6 +80,7 @@ Player.prototype.checkCollision = function() {
         if (allEnemies[i].x < this.x + 50 && allEnemies[i].x + 50 > this.x && allEnemies[i].y < this.y + 40 && 40 + allEnemies[i].y > this.y) {
             this.x = 305;
             this.y = 380;
+            this.score = 0;
         }
     }
 };
