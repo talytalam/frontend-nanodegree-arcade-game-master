@@ -110,43 +110,37 @@ var Rock = function (x,y) {
     this.x = x;
     this.y = y;
     this.sprite = 'images/Rock.png';
-    this.visible = true;
 };
 
 
 Rock.prototype.render = function () {
-    if(this.visible === true) {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);  
-    } 
 };
 
 
-//generate random rocks
-var rocksX = Math.round(Math.random() * 700 + 1);
-var rocksY = Math.round(Math.random() * 164 + 63);
-
-
-
+//This counts the score of the player by collecting rocks
 var scoreCount = 0;
 
-//This counts the score of the player by collecting rocks
-Rock.prototype.collectAndScore = function (scoreCount,rocksX,rocksY) {
+Rock.prototype.collectAndScore = function () {
     if(player.x < this.x + 50 && player.x + 50 > this.x && player.y < this.y + 40 
         && 40 + player.y > this.y) 
     {
-        this.visible = false;
+        //generate random rocks
+        var rocksX = Math.random() * (650 - 10);
+        var rocksY = Math.random() * (227-63);
+        
+        this.x += 2000;
         scoreCount++;
+
         var newGem = new Rock(rocksX,rocksY);
         allRocks.push(newGem);
     }
     return scoreCount;
 };
 
-
-
 var allRocks = [new Rock(535,63), new Rock(270, 227)];
 
-//Display score 
+//Display score, not working
 var score = document.getElementById('score');
 score.innerHTML = "Score : " + scoreCount;
 
