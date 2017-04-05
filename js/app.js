@@ -136,15 +136,17 @@ Rock.prototype.collectAndScore = function () {
         var newGem = new Rock(rocksX,rocksY);
         allRocks.push(newGem);
     }
-    return player.score;
+    //Display score
+    var score = document.getElementById('score');
+    score.innerHTML = "Score : " + player.score;
 };
 
 var allRocks = [new Rock(535,63), new Rock(270, 227)];
 
 
-//Display score, not working
-var score = document.getElementById('score');
-score.innerHTML = "Score : " + player.score;
+
+
+
 
 
 
