@@ -4,6 +4,12 @@ Udacity frontend-nanodegree-arcade-game
 
 Cross the bridge and avoid the man-eating bugs!!!
 
+How to play: 
+1. Download all files from the repository
+2. Open index.html in your browser
+
+That's it!
+
 Rule:
 1. Use arrow keys (left, right, up, down) to control the player
 2. Collect rocks to protect yourself! 

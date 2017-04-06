@@ -21,8 +21,7 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x += Math.random() * this.speed * dt;
-    if (this.x > 800) 
-    {
+    if (this.x > 800) {
         this.x = -50;
         this.x += Math.random() * this.speed * dt;
     }
@@ -30,7 +29,7 @@ Enemy.prototype.update = function(dt) {
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    ctx.drawImage(Resources.get(this.sprite),this.x,this.y);
 };
 
 
@@ -51,28 +50,28 @@ Player.prototype.update = function() {
         this.x = 305;
         this.y = 380;
     }
-    
 };
 
 Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);  
+    ctx.drawImage(Resources.get(this.sprite),this.x,this.y);  
 };
 
 //handle input to control player
 Player.prototype.handleInput = function(key) {
 
     switch (key) {
-        case 'left': 
+        case "left": 
             this.x -= 100;
             break;
-        case 'right':
+        case "right":
             this.x += 100;
-            break
-        case 'up':
+            break;
+        case "up":
             this.y -= 80;
             break;
-        case 'down':
+        case "down":
             this.y += 80;
+            break;
     }
 };
 Player.prototype.checkCollision = function() {
@@ -116,15 +115,13 @@ var Rock = function (x,y) {
 
 
 Rock.prototype.render = function () {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);  
+    ctx.drawImage(Resources.get(this.sprite),this.x,this.y);  
 };
 
 
 //This counts the score of the player by collecting rocks
 Rock.prototype.collectAndScore = function () {
-    if(player.x < this.x + 50 && player.x + 50 > this.x && player.y < this.y + 40 
-        && 40 + player.y > this.y) 
-    {
+    if(player.x < this.x + 50 && player.x + 50 > this.x && player.y < this.y + 40 && 40 + player.y > this.y) {
         //generate random rocks
         var rocksX = Math.random() * (650 - 10);
         var rocksY = Math.random() * (227 - 63);
