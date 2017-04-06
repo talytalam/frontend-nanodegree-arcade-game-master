@@ -2,20 +2,34 @@
 //row 2: y = 145
 //row 3: y = 227
 
+//Superclass for all things drawn on canvas
+var Thing = function (img) {
+    this.sprite = img;
+};
+
+//render all things drawn on canvas
+Thing.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite),this.x,this.y);
+};
+
+
 // Enemies our player must avoid
 var Enemy = function(x,y,speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
+    Thing.call(this, 'images/enemy-bug.png');
     this.x = x;
     this.y = y;
     this.speed = speed;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
+    //this.sprite = 'images/enemy-bug.png';
 };
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
+Enemy.prototype = Object.create(Thing.prototype);
+Enemy.prototype.constructor = Enemy;
 Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
@@ -28,9 +42,10 @@ Enemy.prototype.update = function(dt) {
 };
 
 // Draw the enemy on the screen, required method for game
+/* replaced by superclass Thing
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite),this.x,this.y);
-};
+};*/
 
 
 
@@ -38,13 +53,16 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function() {
-    this.sprite = 'images/char-horn-girl.png';
+    Thing.call(this,'images/char-horn-girl.png');
+    //this.sprite = 'images/char-horn-girl.png';
     this.x = 305;
     this.y = 380;
     this.score = 0;
 };
 
 //bind player on canvas
+Player.prototype = Object.create(Thing.prototype);
+Player.prototype.constructor = Player;
 Player.prototype.update = function() {
     if (this.x < -1 || this.x > 700 || this.y > 420 || this.y < -40) {
         this.x = 305;
@@ -52,9 +70,10 @@ Player.prototype.update = function() {
     }
 };
 
+/*replaced by superclass Thing
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite),this.x,this.y);  
-};
+};*/
 
 //handle input to control player
 Player.prototype.handleInput = function(key) {
@@ -108,18 +127,22 @@ document.addEventListener('keyup', function(e) {
 
 //Rocks as collectible
 var Rock = function (x,y) {
+    Thing.call(this,'images/Rock.png');
     this.x = x;
     this.y = y;
-    this.sprite = 'images/Rock.png';
+    //this.sprite = 'images/Rock.png';
 };
 
 
+/*replaced by superclass Thing
 Rock.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite),this.x,this.y);  
-};
+};*/
 
 
 //This counts the score of the player by collecting rocks
+Rock.prototype = Object.create(Thing.prototype);
+Rock.prototype.constructor = Rock;
 Rock.prototype.collectAndScore = function () {
     if(player.x < this.x + 50 && player.x + 50 > this.x && player.y < this.y + 40 && 40 + player.y > this.y) {
         //generate random rocks
