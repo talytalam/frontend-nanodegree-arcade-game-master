@@ -152,21 +152,23 @@ Rock.prototype.render = function () {
 //This counts the score of the player by collecting rocks
 Rock.prototype = Object.create(Thing.prototype);
 Rock.prototype.constructor = Rock;
-Rock.prototype.collectAndScore = function () {
+Rock.prototype.collectAndScore = function() {
     if(player.x < this.x + 50 && player.x + 50 > this.x && player.y < this.y + 40 && 40 + player.y > this.y) {
-        //generate random rocks
-        var rocksX = Math.random() * (650 - 10);
-        var rocksY = Math.random() * (227 - 63);
-        
         this.x += 2000;
         player.score++;
-        var newGem = new Rock(rocksX,rocksY);
-        allRocks.push(newGem);
+        //var newGem = new Rock(rocksX,rocksY);
+        allRocks.push(this.newRock());
     }
     //Display score
     var score = document.getElementById('score');
     score.innerHTML = "Score : " + player.score;
 };
+//generate random rocks
+Rock.prototype.newRock = function() {
+        var rocksX = Math.random() * (650 - 10);
+        var rocksY = Math.random() * (227 - 63);
+        return new Rock(rocksX,rocksY);
+}
 
 var allRocks = [new Rock(535,63), new Rock(270, 227)];
 
