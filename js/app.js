@@ -46,6 +46,7 @@ Enemy.prototype.checkCollision = function() {
         player.x = 305;
         player.y = 380;
         player.score = 0;
+        alert("You are eaten...Poor thing!");
         }
 };
 // Draw the enemy on the screen, required method for game
