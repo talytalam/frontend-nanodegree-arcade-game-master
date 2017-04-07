@@ -41,6 +41,13 @@ Enemy.prototype.update = function(dt) {
     }
 };
 
+Enemy.prototype.checkCollision = function() {
+    if (this.x < player.x + 50 && this.x + 50 > player.x && this.y < player.y + 40 && 40 + this.y > player.y) {
+        player.x = 305;
+        player.y = 380;
+        player.score = 0;
+        }
+};
 // Draw the enemy on the screen, required method for game
 /* replaced by superclass Thing
 Enemy.prototype.render = function() {
@@ -93,15 +100,17 @@ Player.prototype.handleInput = function(key) {
             break;
     }
 };
-Player.prototype.checkCollision = function() {
+
+//move to Enemy.prototype to avoid looping
+/*Player.prototype.checkCollision = function() {
     for (var i=0;i < allEnemies.length;i++) {
-        if (allEnemies[i].x < this.x + 50 && allEnemies[i].x + 50 > this.x && allEnemies[i].y < this.y + 40 && 40 + allEnemies[i].y > this.y) {
+        if (this.x < this.x + 50 && allEnemies[i].x + 50 > this.x && allEnemies[i].y < this.y + 40 && 40 + allEnemies[i].y > this.y) {
             this.x = 305;
             this.y = 380;
             this.score = 0;
         }
     }
-};
+};*/
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies

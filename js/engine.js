@@ -93,9 +93,10 @@ var Engine = (function(global) {
     function updateEntities(dt) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
+            enemy.checkCollision();
         });
         player.update();
-        player.checkCollision();
+        //player.checkCollision();
         allRocks.forEach(function(rock) {
             rock.collectAndScore();
         });
